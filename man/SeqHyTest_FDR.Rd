@@ -25,7 +25,7 @@ controlled FDR input.
 }
 \examples{
 data(data_list_example)
-TStat = TestStatistics(data.list.example)
+TStat = AtST_stat(data.list.example)$TestStat
 p_value.seq = 1-pchisq(q=TStat,df=1)
 SeqHyTest_FDR(p_value.seq,tuning_type='DOS',tuning=1,FDR=0.2)
 }

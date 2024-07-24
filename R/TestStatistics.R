@@ -1,14 +1,18 @@
-#' @title Statistics Calculation
+#' @title Statistics Calculation of AtST
 #' @description
 #' This function is to calculate the test statistics with data input.
 #' @param data.list a list with 3 elements, including X, A, Y
-#' @return test statistics
+#' @param an the tuning parameter in the indicators
+#' @param bn the tuning parameter in the test statistic
+#' @return a list of 3 elements, including test statistics, T statistic of beta, and T statistic of gamma.
 #' @export
 #' @importFrom ncvreg ncvreg
 #' @examples
 #' data(data_list_example)
-#' TestStatistics(data.list.example)
-TestStatistics = function(data.list){
+#' AtST_stat(data.list.example)$TestStat
+AtST_stat = function(data.list,
+                     an=0.15*nrow(data.list$X)/log(nrow(data.list$X)),
+                     bn=2.25*log(log(nrow(data.list$X)))/(log((log(log(ncol(data.list$M))+1)+1))+1)){
 
   # data retrieving
   X = data.list$X
@@ -18,10 +22,6 @@ TestStatistics = function(data.list){
   d = ncol(M)
   q = ncol(X)
   n = nrow(X)
-
-  # tuning parameter setting
-  an = 0.15*n/log(n)
-  bn = 2.25*log(log(n))/(log((log(log(d)+1)+1))+1)
 
   # penalty factors setting
   penalty.factor_beta = c(rep(0,2),rep(1,q))
@@ -123,5 +123,5 @@ TestStatistics = function(data.list){
   res_vec_1 = c(T_k_2,T_beta,T_gamma,T_choice,hat_beta_M_seq,hat_gamma_A_seq,
                 hat_sigma2_beta_margin,hat_sigma2_gamma_margin)
   # return(unname(res_vec_1))
-  return(unname(T_k_2))
+  return(list(TestStat=unname(T_k_2),T_beta=unname(T_beta),T_gamma=unname(T_gamma)))
 }

@@ -1,10 +1,17 @@
 Package: AtST
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Title: Adaptive-to-Sub-Null Test
+Version: 0.0.1
+Authors@R: c(
+  person(given="Jiaqi", family="Huang", email="jhuang@mail.bnu.edu.cn", role = c("aut")),
+  person(given="Chuyun", family="Ye", email="cyye@mail.bnu.edu.cn", role = c("aut","cre")),
+  person(given="Lixing", family="Zhu", email="lzhu@bnu.edu.cn", role = c("aut")))
+Description: An Adaptive-to-Sub-Null test (AtST) tailored specifically for the 
+             assessment of multidimensional mediation effects. This package would
+             focus on large-scale hypothesis testing of causal mediation effects 
+             and control false discovery rate (FDR) for linear structural equation 
+             models. With observed data inputted, this package provide direct test
+             statistics output, as well as the rejection result with controlled
+             FDR.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
